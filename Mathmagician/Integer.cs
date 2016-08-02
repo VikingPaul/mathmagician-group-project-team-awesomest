@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mathmagician
 {
-    class Program
+    public class Integer
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

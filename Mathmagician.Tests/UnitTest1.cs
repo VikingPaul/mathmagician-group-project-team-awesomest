@@ -6,9 +6,30 @@ namespace Mathmagician.Tests
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
+        public void ThisIsNotATest()
         {
+
         }
+
+        [TestMethod]
+        public void TestThatThisIsTrue()
+        {
+            //arrange
+            //act
+            //assert
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void ThisShouldFail()
+        {
+            //arrange
+            //act
+            //assert
+            Assert.Fail();
+        }
+
+  
+        
     }
 }

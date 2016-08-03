@@ -8,6 +8,11 @@ namespace Mathmagician.Tests
     public class PrimeTest
     {
         [TestMethod]
+        public void Prime0()
+        {
+            Assert.IsNotNull(new Prime(1));
+        }
+        [TestMethod]
         public void Prime1()
         {
             Prime num = new Prime(1);

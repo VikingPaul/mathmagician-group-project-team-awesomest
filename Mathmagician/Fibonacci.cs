@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mathmagician
 {
-    class Fibonacci
+    public class Fibonacci
     {
-        public void PrintFib(int numbers1)
+        public int[] PrintFib(int numbers1)
         {
             int[] intArray = new int[numbers1];
             {
@@ -23,6 +23,7 @@ namespace Mathmagician
                     Console.Write("{0}, ", item);
                 }
                 Console.ReadLine();
+                return intArray;
             }
         }
 

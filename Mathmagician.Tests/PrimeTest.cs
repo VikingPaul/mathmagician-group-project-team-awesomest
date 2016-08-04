@@ -21,15 +21,13 @@ namespace Mathmagician.Tests
         public void Prime2()
         {
             Prime num = new Prime(1);
-            List<int> expected = new List<int> { 2 };
-            Assert.AreEqual(expected.ToString(), num.PrimeList().ToString());
+            Assert.IsTrue(2 == num.PrimeList()[0]);
         }
         [TestMethod]
         public void Prime3()
         {
-            Prime num = new Prime(5);
-            List<int> expected = new List<int> { 2, 3, 5, 7, 11 };
-            Assert.AreEqual(expected.ToString(), num.PrimeList().ToString());
+            Prime num = new Prime(100);
+            Assert.AreEqual(541, num.PrimeList()[99]);
         }
     }
 }

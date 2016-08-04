@@ -8,5 +8,22 @@ namespace Mathmagician
 {
     public class Integer
     {
+        public void PrintInteger(int numbers1)
+        {
+            int[] intArray = new int[numbers1];
+            {
+                for (var i = 0; i < numbers1; i++)
+                {
+                    intArray[i] = i;
+                }
+
+            }
+
+            foreach (int item in intArray)
+            {
+                Console.Write("{0}, ", item);
+            }
+            Console.ReadLine();
+        }
     }
 }

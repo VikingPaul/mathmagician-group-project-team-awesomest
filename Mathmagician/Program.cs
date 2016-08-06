@@ -19,7 +19,7 @@ namespace Mathmagician
             string userStringOfValues = "";
             int userNumberOfValues = 0;
 
-            // Gets the user 
+            // Gets the user operation input
             while (invalidCommandInput)
             {
                 Console.Write("What would you like for me to do? ");
@@ -27,6 +27,7 @@ namespace Mathmagician
                 invalidCommandInput = userInterface.CheckUserCommandInput(userOperationCommand);
             }
 
+            // Gets the user number of value to output
             while (invalidNumberInput)
             {
                 Console.Write("How many should I print? ");
@@ -35,8 +36,12 @@ namespace Mathmagician
             }
             userNumberOfValues = Int32.Parse(userStringOfValues);
 
+            // Calls the appropriate method and prints the 
             Console.WriteLine($"\nCool, I'm going to print {userNumberOfValues} {userOperationCommand} numbers.");
             userInterface.InitiateNumberOperation(userOperationCommand, userNumberOfValues);
+
+            Console.Write($"Your values are: ");
+            userInterface.PrintReturnedOperationList();
         }
     }
 }

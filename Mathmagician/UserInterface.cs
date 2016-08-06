@@ -8,6 +8,8 @@ namespace Mathmagician
 {
     public class UserInterface
     {
+        List<int> returnedOperationResult { get; set; } // Holds the operation values returned from a called method
+
         // Calls the correct operation method based on the users prior input
         public void InitiateNumberOperation(string userMathOperationCommand, int userNumbersToPrint)
         {
@@ -36,10 +38,8 @@ namespace Mathmagician
         }
 
         // Prints the user's results
-        List<int> returnedOperationResult { get; set; } // Holds the operation values returned from a called method
         public void PrintReturnedOperationList()
         {
-            Console.Write($"Your values are: ");
             foreach (var listItem in returnedOperationResult)
             {
                 Console.Write($"{listItem} ");
@@ -76,6 +76,7 @@ namespace Mathmagician
                 Console.WriteLine("Whoops!");
                 return true;
             }
+
             return false;
         }
     }

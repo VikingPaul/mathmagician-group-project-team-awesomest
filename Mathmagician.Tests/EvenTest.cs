@@ -8,29 +8,29 @@ namespace Mathmagician.Tests
     public class EvenTest
     {
         [TestMethod]
-        public void Even0()
+        public void IsEvenClassNull()
         {
             Assert.IsNotNull(new Even(1));
         }
         [TestMethod]
-        public void Even1()
+        public void IsEvenListList()
         {
             Assert.IsInstanceOfType(new Even(1).EvenList(), typeof(List<int>));
         }
         [TestMethod]
-        public void Even2()
+        public void IsEvenListCorrectLength()
         {
             Even num = new Even(5);
             Assert.IsTrue(5 == num.EvenList().Count);
         }
         [TestMethod]
-        public void Even3()
+        public void IsFirstEvenTwo()
         {
             Even num = new Even(1);
             Assert.IsTrue(2 == num.EvenList()[0]);
         }
         [TestMethod]
-        public void Even4()
+        public void IsFifthEvenTen()
         {
             Even num = new Even(5);
             Assert.IsTrue(10 == num.EvenList()[4]);

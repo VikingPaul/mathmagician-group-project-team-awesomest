@@ -18,7 +18,7 @@ namespace Mathmagician.Tests
             Assert.IsNotNull(my_userInterface);
 
         }
-
+/*
         [TestMethod]
         public void UserInterface_CanGetSetUserMathOperationCommand()
         {
@@ -44,5 +44,6 @@ namespace Mathmagician.Tests
             //assert
             Assert.AreEqual("12", my_userInterface.userNumbersToPrint);
         }
+        */
     }
 }

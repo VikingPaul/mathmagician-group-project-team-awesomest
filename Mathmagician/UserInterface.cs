@@ -10,10 +10,14 @@ namespace Mathmagician
     {
         // Holds the User's Operation Command
         public string userMathOperationCommand { get; set; } = null;
+        
+        // Holds the User's Numbers to Print
         public int userNumbersToPrint { get; set; } = 0;
-        public object returnedList { get; set; }
+        
+        // Holds the operation values returned from a called method
+        public List<int> returnedOperationResult { get; set; }
 
-        // Query the user and set the user's command
+        // Query the user and set the user's operation command
         public void InitialUserOperationCommand()
         {
             bool wrongInput = true;
@@ -25,6 +29,7 @@ namespace Mathmagician
             }
         }
 
+        // Query the user for the number of operation results to print and set it 
         public void GetUserNumbersToPrint()
         {
             bool wrongInput = true;
@@ -38,6 +43,7 @@ namespace Mathmagician
             }
         }
 
+        // Calls the correct operation method based on the users prior input
         public void InitiateNumberOperation()
         {
             Console.WriteLine($"\nCool, I'm going to print {userNumbersToPrint} {userMathOperationCommand} numbers.");
@@ -57,18 +63,26 @@ namespace Mathmagician
                     Console.WriteLine($"...Called {userMathOperationCommand}...");
                     break;
                 case "odd":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
+                    Odd oddNumbers = new Odd();
+                    returnedOperationResult = oddNumbers.CountOddNumbers(userNumbersToPrint);
                     break;
                 default:
                     break;
             }
         }
 
+        // Prints the user's results
         public void PrintReturnedOperationList()
         {
-
+            Console.Write($"Your values are: ");
+            foreach (var listItem in returnedOperationResult)
+            {
+                Console.Write($"{listItem} ");
+            }
+            Console.Write("\n");
         }
 
+        // Checks to see if the users operation command is one of the five operations
         public bool CheckUserCommandInput()
         {
             if (userMathOperationCommand != "Integers"
@@ -83,6 +97,7 @@ namespace Mathmagician
                 return false;
         }
 
+        // Checks to see if the user-entered "number" of results to display is actually an integer 
             public bool CheckUserNumberInput(string sentUserStringNumberToPrint)
         {
             int result;

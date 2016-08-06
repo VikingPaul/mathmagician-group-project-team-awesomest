@@ -24,7 +24,7 @@ namespace Mathmagician
             while (wrongInput)
             {
                 Console.Write("What would you like for me to do? ");
-                userMathOperationCommand = Console.ReadLine();
+                userMathOperationCommand = Console.ReadLine().ToLower();
                 wrongInput = CheckUserCommandInput();
             }
         }
@@ -50,21 +50,22 @@ namespace Mathmagician
 
             switch (userMathOperationCommand)
             {
-                case "Integers":
+                case "integers":
                     Console.WriteLine($"...Called {userMathOperationCommand}...");
                     break;
-                case "Primes":
+                case "primes":
                     Console.WriteLine($"...Called {userMathOperationCommand}...");
                     break;
-                case "Fibonacci":
+                case "fibonacci":
                     Console.WriteLine($"...Called {userMathOperationCommand}...");
                     break;
                 case "even":
                     Console.WriteLine($"...Called {userMathOperationCommand}...");
                     break;
                 case "odd":
-                    Odd oddNumbers = new Odd();
-                    returnedOperationResult = oddNumbers.CountOddNumbers(userNumbersToPrint);
+                    Console.WriteLine($"...Called {userMathOperationCommand}...");
+                    // Odd oddNumbers = new Odd();
+                    //  returnedOperationResult = oddNumbers.CountOddNumbers(userNumbersToPrint);
                     break;
                 default:
                     break;
@@ -85,9 +86,9 @@ namespace Mathmagician
         // Checks to see if the users operation command is one of the five operations
         public bool CheckUserCommandInput()
         {
-            if (userMathOperationCommand != "Integers"
-                && userMathOperationCommand != "Primes"
-                && userMathOperationCommand != "Fibonacci"
+            if (userMathOperationCommand != "integers"
+                && userMathOperationCommand != "primes"
+                && userMathOperationCommand != "fibonacci"
                 && userMathOperationCommand != "even"
                 && userMathOperationCommand != "odd")
             {

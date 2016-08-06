@@ -11,16 +11,24 @@ namespace Mathmagician.Tests
         public void SingleNumFibnocciTest1()
         {
             Fibonacci fib = new Fibonacci();
-            int[] answer5= fib.PrintFib(5);
-            Assert.AreEqual(1, answer5[0]);    
+            int[] answer1= fib.PrintFib(23);
+            Assert.AreEqual(28657, answer1[22]);    
         }
 
         [TestMethod]
         public void SingleNumFibnocciTest2()
         {
             Fibonacci fib = new Fibonacci();
-            int[] answer6 = fib.PrintFib(6);
-            Assert.AreEqual(5, answer6[4]);
+            int[] answer2 = fib.PrintFib(17);
+            Assert.AreEqual(1597, answer2[16]);
+        }
+
+        [TestMethod]
+        public void FibTestLength()
+        {
+            Fibonacci fib = new Fibonacci();
+            int[] answer3 = fib.PrintFib(12);
+            Assert.AreEqual(12, answer3.Length);
         }
 
     }

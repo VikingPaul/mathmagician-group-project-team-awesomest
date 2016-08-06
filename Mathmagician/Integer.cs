@@ -8,7 +8,7 @@ namespace Mathmagician
 {
     public class Integer
     {
-        public void PrintInteger(int numbers1)
+        public int[] PrintInteger(int numbers1)
         {
             int[] intArray = new int[numbers1];
             {
@@ -19,11 +19,12 @@ namespace Mathmagician
 
             }
 
-            foreach (int item in intArray)
-            {
-                Console.Write("{0}, ", item);
-            }
-            Console.ReadLine();
+            //foreach (int item in intArray)
+            //{
+            //    Console.Write("{0}, ", item);
+            //}
+            //Console.ReadLine();
+            return intArray;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Mathmagician.Tests
@@ -6,43 +7,88 @@ namespace Mathmagician.Tests
     [TestClass]
     public class UserInterfaceTests
     {
+        //Checks to see if an instance of UserInterface can be created 
         [TestMethod]
         public void UserInterface_EnsureICanCreateAnInstance()
         {
-            //arrange: nothing in this case
+            //arrange (nothing in this case)
 
-            //act
-            UserInterface my_userInterface = new UserInterface();
+            //act (nothing in this case)
 
             //assert
-            Assert.IsNotNull(my_userInterface);
-
+            Assert.IsNotNull(new UserInterface());
         }
 
+        //This tests to see if the user Operation String can Set/Get 
         [TestMethod]
         public void UserInterface_CanGetSetUserMathOperationCommand()
         {
             //arrange
-            UserInterface my_userInterface = new UserInterface();
+            UserInterface myUserInterfaceCommand = new UserInterface();
 
             //act
-            my_userInterface.userMathOperationCommand = "hello";
+            myUserInterfaceCommand.userMathOperationCommand = "hello";
 
             //assert
-            Assert.AreEqual("hello", my_userInterface.userMathOperationCommand);
+            Assert.AreEqual("hello", myUserInterfaceCommand.userMathOperationCommand);
         }
 
+        //Checks to see if the user command is not a valid command (it should return true, that the command is invalid)
         [TestMethod]
-        public void UserInterface_CanGetSetUserNumbersToPrint()
+        public void UserInterface_TheUserCommandIsInvalid()
         {
             //arrange
-            UserInterface my_userInterface = new UserInterface();
+            UserInterface myUserInterfaceMixedCaseCommand = new UserInterface();
 
             //act
-            my_userInterface.userNumbersToPrint = "12";
+            myUserInterfaceMixedCaseCommand.userMathOperationCommand = "FiBoNaCci";
 
             //assert
-            Assert.AreEqual("12", my_userInterface.userNumbersToPrint);
+            Assert.IsTrue(myUserInterfaceMixedCaseCommand.CheckUserCommandInput());
+        }
+
+        //Checks to see if the user command is a valid command, it looks at lower case (it should return False, in that the
+        // command is not invalid)
+        [TestMethod]
+        public void UserInterface_TheUserCommandIsValid()
+        {
+            //arrange
+            UserInterface myUserInterfaceLowerCaseCommand = new UserInterface();
+
+            //act
+            myUserInterfaceLowerCaseCommand.userMathOperationCommand = "fibonacci";
+
+            //assert
+            Assert.IsFalse(myUserInterfaceLowerCaseCommand.CheckUserCommandInput());
+        }
+
+        //This tests to see if the user Operation String can Set/Get 
+        [TestMethod]
+        public void UserInterface_CanGetSetUserNumbersToPrintCommand()
+        {
+            //arrange
+            UserInterface myUserInterfacePrintNumber = new UserInterface();
+
+            //act
+            myUserInterfacePrintNumber.userNumbersToPrint = 7;
+
+            //assert
+            Assert.AreEqual(7, myUserInterfacePrintNumber.userNumbersToPrint);
+        }
+
+        //This tests to see if the user interface can Set/Get the "returned" list and that a single element
+        // matches what should be contained 
+        [TestMethod]
+        public void UserInterface_CanGetSetListOfNumbersAndReturnASingleElement()
+        {
+            //arrange
+            UserInterface myUserInterfaceList = new UserInterface();
+
+            //act
+            myUserInterfaceList.returnedOperationResult = new List<int> { 7, 8, 9 };
+
+            //assert
+            Assert.AreEqual(8, myUserInterfaceList.returnedOperationResult[1]);
         }
     }
 }

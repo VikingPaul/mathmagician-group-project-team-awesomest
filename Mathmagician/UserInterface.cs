@@ -8,46 +8,9 @@ namespace Mathmagician
 {
     public class UserInterface
     {
-        // Holds the User's Operation Command
-        public string userMathOperationCommand { get; set; } = null;
-        
-        // Holds the User's Numbers to Print
-        public int userNumbersToPrint { get; set; } = 0;
-        
-        // Holds the operation values returned from a called method
-        public List<int> returnedOperationResult { get; set; }
-
-        // Query the user and set the user's operation command
-        public void InitialUserOperationCommand()
-        {
-            bool wrongInput = true;
-            while (wrongInput)
-            {
-                Console.Write("What would you like for me to do? ");
-                userMathOperationCommand = Console.ReadLine().ToLower();
-                wrongInput = CheckUserCommandInput();
-            }
-        }
-
-        // Query the user for the number of operation results to print and set it 
-        public void GetUserNumbersToPrint()
-        {
-            bool wrongInput = true;
-            string userStringNumberToPrint = null;
-
-            while (wrongInput)
-            {
-                Console.Write("How many should I print? ");
-                userStringNumberToPrint = Console.ReadLine();
-                wrongInput = CheckUserNumberInput(userStringNumberToPrint);
-            }
-        }
-
         // Calls the correct operation method based on the users prior input
-        public void InitiateNumberOperation()
+        public void InitiateNumberOperation(string userMathOperationCommand, int userNumbersToPrint)
         {
-            Console.WriteLine($"\nCool, I'm going to print {userNumbersToPrint} {userMathOperationCommand} numbers.");
-
             switch (userMathOperationCommand)
             {
                 case "integers":
@@ -73,6 +36,7 @@ namespace Mathmagician
         }
 
         // Prints the user's results
+        List<int> returnedOperationResult { get; set; } // Holds the operation values returned from a called method
         public void PrintReturnedOperationList()
         {
             Console.Write($"Your values are: ");
@@ -84,13 +48,13 @@ namespace Mathmagician
         }
 
         // Checks to see if the users operation command is one of the five operations
-        public bool CheckUserCommandInput()
+        public bool CheckUserCommandInput(string sentUserMathOperationCommand)
         {
-            if (userMathOperationCommand != "integers"
-                && userMathOperationCommand != "primes"
-                && userMathOperationCommand != "fibonacci"
-                && userMathOperationCommand != "even"
-                && userMathOperationCommand != "odd")
+            if (sentUserMathOperationCommand != "integers"
+                && sentUserMathOperationCommand != "primes"
+                && sentUserMathOperationCommand != "fibonacci"
+                && sentUserMathOperationCommand != "even"
+                && sentUserMathOperationCommand != "odd")
             {
                 Console.WriteLine("Whoops!");
                 return true;
@@ -112,7 +76,6 @@ namespace Mathmagician
                 Console.WriteLine("Whoops!");
                 return true;
             }
-            userNumbersToPrint = result;
             return false;
         }
     }

@@ -74,7 +74,7 @@ namespace Mathmagician
         // Prints the user's results
         public void PrintReturnedOperationList()
         {
-            Console.WriteLine($"Your values are: ");
+            Console.Write($"Your values are: ");
             foreach (var listItem in returnedOperationResult)
             {
                 Console.Write($"{listItem} ");

@@ -19,11 +19,7 @@ namespace Mathmagician
 
             }
 
-            //foreach (int item in intArray)
-            //{
-            //    Console.Write("{0}, ", item);
-            //}
-            //Console.ReadLine();
+      
             return intArray;
         }
     }

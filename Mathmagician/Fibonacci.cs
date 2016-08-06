@@ -18,11 +18,7 @@ namespace Mathmagician
                 {
                     intArray[i] = intArray[i - 2] + intArray[i - 1];
                 }
-                //foreach (int item in intArray)
-                //{
-                 //   Console.Write("{0}, ", item);
-                //}
-                //Console.ReadLine();
+                
                 return intArray;
             }
         }

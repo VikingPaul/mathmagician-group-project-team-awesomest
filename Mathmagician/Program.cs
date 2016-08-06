@@ -16,6 +16,7 @@ namespace Mathmagician
             userInterface.InitialUserOperationCommand();
             userInterface.GetUserNumbersToPrint();
             userInterface.InitiateNumberOperation();
+            userInterface.PrintReturnedOperationList();
         }
     }
 }

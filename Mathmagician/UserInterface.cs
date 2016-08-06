@@ -64,9 +64,14 @@ namespace Mathmagician
             }
         }
 
-        public void PrintReturnedOperationList()
+        public void PrintReturnedOperationList(List<int> returnedListOfIntegersFromOperation)
         {
-
+            Console.WriteLine($"Your values are: ");
+            foreach (var listItem in returnedListOfIntegersFromOperation)
+            {
+                Console.Write($"{listItem} ");
+            }
+            Console.Write("\n");
         }
 
         public bool CheckUserCommandInput()

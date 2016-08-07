@@ -8,45 +8,8 @@ namespace Mathmagician
 {
     public class UserInterface
     {
-        List<int> returnedOperationResult { get; set; } // Holds the operation values returned from a called method
-
-        // Calls the correct operation method based on the users prior input
-        public void InitiateNumberOperation(string userMathOperationCommand, int userNumbersToPrint)
-        {
-            switch (userMathOperationCommand)
-            {
-                case "integers":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "primes":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "fibonacci":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "even":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "odd":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    // Odd oddNumbers = new Odd();
-                    //  returnedOperationResult = oddNumbers.CountOddNumbers(userNumbersToPrint);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        // Prints the user's results
-        public void PrintReturnedOperationList()
-        {
-            foreach (var listItem in returnedOperationResult)
-            {
-                Console.Write($"{listItem} ");
-            }
-            Console.Write("\n");
-        }
-
+        public List<int> returnedOperationResult { get; set; } = null; // Holds the operation values returned from a called method
+        
         // Checks to see if the users operation command is one of the five operations
         public bool CheckUserCommandInput(string sentUserMathOperationCommand)
         {
@@ -59,11 +22,11 @@ namespace Mathmagician
                 Console.WriteLine("Whoops!");
                 return true;
             }
-                return false;
+            return false;
         }
 
         // Checks to see if the user-entered "number" of results to display is actually an integer 
-            public bool CheckUserNumberInput(string sentUserStringNumberToPrint)
+        public bool CheckUserNumberInput(string sentUserStringNumberToPrint)
         {
             int result;
 
@@ -71,13 +34,55 @@ namespace Mathmagician
             {
                 Console.WriteLine("Whoops!");
                 return true;
-            } else if (result < 1)
+            }
+            else if (result < 1)
             {
                 Console.WriteLine("Whoops!");
                 return true;
             }
-
             return false;
+        }
+
+        // Calls the correct operation method based on the users prior input
+        public void InitiateNumberOperation(string userMathOperationCommand, int userNumbersToPrint)
+        {
+            switch (userMathOperationCommand)
+            {
+                case "integers":
+                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
+                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    break;
+                case "primes":
+                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
+                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    break;
+                case "fibonacci":
+                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
+                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    break;
+                case "even":
+                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
+                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    break;
+                case "odd":
+                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
+                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    break;
+                default:
+                    returnedOperationResult = new List<int> { 96500 }; 
+                    break;
+            }
+        }
+
+        // Adds the user's number values to a string for outputting to the Console
+        public string ReturnedOperationValues()
+        {
+            string operationValues = "";
+            foreach (var listItem in returnedOperationResult)
+            {
+                operationValues += $"{listItem} ";
+            }
+            return operationValues;
         }
     }
 }

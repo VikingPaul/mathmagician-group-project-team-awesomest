@@ -41,7 +41,7 @@ namespace Mathmagician
             userInterface.InitiateNumberOperation(userOperationCommand, userNumberOfValues);
 
             Console.Write($"Your values are: ");
-            userInterface.PrintReturnedOperationList();
+            Console.WriteLine(userInterface.ReturnedOperationValues());
         }
     }
 }

@@ -11,26 +11,32 @@ namespace Mathmagician.Tests
         [TestMethod]
         public void UserInterface_EnsureICanCreateAnInstance()
         {
-            //arrange (nothing in this case)
-
-            //act (nothing in this case)
-
             //assert
             Assert.IsNotNull(new UserInterface());
         }
 
-        //This tests to see if the user Operation String can Set/Get 
+        //This tests to see if the List holding the returned values is properly intiallized as "null"
         [TestMethod]
-        public void UserInterface_CanGetSetUserMathOperationCommand()
+        public void UserInterface_CheckTheAssignmentOfReturnedNumberList()
         {
             //arrange
-            UserInterface myUserInterfaceCommand = new UserInterface();
-
-            //act
-            myUserInterfaceCommand.userMathOperationCommand = "hello";
+            UserInterface myUserInterfaceList = new UserInterface();
 
             //assert
-            Assert.AreEqual("hello", myUserInterfaceCommand.userMathOperationCommand);
+            Assert.IsNull(myUserInterfaceList.returnedOperationResult);
+        }
+
+        //This tests to see if the user interface can Set/Get the "returned" list of values and that a single element
+        // matches what should be contained 
+        [TestMethod]
+        public void UserInterface_CanGetSetListOfNumbersAndReturnASingleElement()
+        {
+            //arrange
+            UserInterface myUserInterfaceList = new UserInterface();
+            myUserInterfaceList.returnedOperationResult = new List<int> { 7, 8, 9 };
+
+            //assert
+            Assert.AreEqual(8, myUserInterfaceList.returnedOperationResult[1]);
         }
 
         //Checks to see if the user command is not a valid command (it should return true, that the command is invalid)
@@ -38,57 +44,82 @@ namespace Mathmagician.Tests
         public void UserInterface_TheUserCommandIsInvalid()
         {
             //arrange
-            UserInterface myUserInterfaceMixedCaseCommand = new UserInterface();
-
-            //act
-            myUserInterfaceMixedCaseCommand.userMathOperationCommand = "FiBoNaCci";
+            UserInterface myUserInterfaceCommand = new UserInterface();
 
             //assert
-            Assert.IsTrue(myUserInterfaceMixedCaseCommand.CheckUserCommandInput());
+            Assert.IsTrue(myUserInterfaceCommand.CheckUserCommandInput("hello"));
         }
 
-        //Checks to see if the user command is a valid command, it looks at lower case (it should return False, in that the
-        // command is not invalid)
+        //Checks to see if the user command (in lower case) is a valid command, (it should return False, in that the command is NOT invalid)
         [TestMethod]
-        public void UserInterface_TheUserCommandIsValid()
+        public void UserInterface_TheUserLowerCaseCommandIsValid()
         {
             //arrange
             UserInterface myUserInterfaceLowerCaseCommand = new UserInterface();
 
-            //act
-            myUserInterfaceLowerCaseCommand.userMathOperationCommand = "fibonacci";
-
             //assert
-            Assert.IsFalse(myUserInterfaceLowerCaseCommand.CheckUserCommandInput());
+            Assert.IsFalse(myUserInterfaceLowerCaseCommand.CheckUserCommandInput("fibonacci"));
         }
 
-        //This tests to see if the user Operation String can Set/Get 
+        //Checks to see if the user command (in mixed case) is a valid command, (it should return False, in that the command is NOT invalid)
         [TestMethod]
-        public void UserInterface_CanGetSetUserNumbersToPrintCommand()
+        public void UserInterface_TheUserMixedCaseCommandIsValid()
         {
             //arrange
-            UserInterface myUserInterfacePrintNumber = new UserInterface();
-
-            //act
-            myUserInterfacePrintNumber.userNumbersToPrint = 7;
+            UserInterface myUserInterfaceMixedCaseCommand = new UserInterface();
 
             //assert
-            Assert.AreEqual(7, myUserInterfacePrintNumber.userNumbersToPrint);
+            Assert.IsFalse(myUserInterfaceMixedCaseCommand.CheckUserCommandInput("fiBoNAcci".ToLower()));
         }
 
-        //This tests to see if the user interface can Set/Get the "returned" list and that a single element
-        // matches what should be contained 
+        //Checks to see if the user "number of values" is a valid number, (it should return True, in that the command is invalid)
         [TestMethod]
-        public void UserInterface_CanGetSetListOfNumbersAndReturnASingleElement()
+        public void UserInterface_TheUserNumberOfValuesIsValid()
         {
             //arrange
-            UserInterface myUserInterfaceList = new UserInterface();
-
-            //act
-            myUserInterfaceList.returnedOperationResult = new List<int> { 7, 8, 9 };
+            UserInterface myUserInterface = new UserInterface();
 
             //assert
-            Assert.AreEqual(8, myUserInterfaceList.returnedOperationResult[1]);
+            Assert.IsTrue(myUserInterface.CheckUserNumberInput("ten"));
+        }
+
+        //Checks to see if the user "number of values" is a valid number, (it should return False, in that the command is NOT invalid)
+        [TestMethod]
+        public void UserInterface_TheUserNumberOfValuesIsInvalid()
+        {
+            //arrange
+            UserInterface myUserInterface = new UserInterface();
+
+            //assert
+            Assert.IsFalse(myUserInterface.CheckUserNumberInput("10"));
+        }
+
+        //The InitiateNumberOperation calls the individual operation method and assigns the returned results to the List returnedOperationResult.
+        // The default of the switch statement should never be called but assigns a single element to returnedOperationResult = 96500
+        [TestMethod]
+        public void UserInterface_CheckTheExcecutionOfTheInitiateNumberOperation()
+        {
+            //arrange
+            UserInterface myUserInterface = new UserInterface();
+
+            //act
+            myUserInterface.InitiateNumberOperation("", 0);
+
+            //assert
+            Assert.AreEqual(new List<int> { 96500 }[0], myUserInterface.returnedOperationResult[0]);
+        }
+
+        //Sets the returnedOperationResult List to {2, 66, 78 } and then calls the ReturnedOperationValues method which put the list values in a string
+        // This checks to see if the returned thing is the correct string
+        [TestMethod]
+        public void UserInterface_IsTheResultsStringInFactTheCorrectString()
+        {
+            //arrange
+            UserInterface myUserInterface = new UserInterface();
+            myUserInterface.returnedOperationResult = new List<int> { 2, 66, 78 };
+
+            //assert
+            Assert.AreEqual("2 66 78 ", myUserInterface.ReturnedOperationValues());
         }
     }
 }

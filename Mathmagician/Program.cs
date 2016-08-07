@@ -36,7 +36,7 @@ namespace Mathmagician
             }
             userNumberOfValues = Int32.Parse(userStringOfValues);
 
-            // Calls the appropriate method and prints the 
+            // Calls the appropriate method and prints the values
             Console.WriteLine($"\nCool, I'm going to print {userNumberOfValues} {userOperationCommand} numbers.");
             userInterface.InitiateNumberOperation(userOperationCommand, userNumberOfValues);
 

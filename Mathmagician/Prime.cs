@@ -13,7 +13,6 @@ namespace Mathmagician
         {
             ////////////////////////////primes ALL start with 2 (1 is not a prime number, only has 1 divisor(itself))
             int lastPrime = 2;
-            Console.WriteLine(numOfPrimes);
             /////////////////////Runs untill the numOfPrimes is reached
             for(int count = 0; count < numOfPrimes; lastPrime++)
             {

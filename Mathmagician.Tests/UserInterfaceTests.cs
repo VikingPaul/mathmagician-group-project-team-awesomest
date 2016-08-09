@@ -26,6 +26,22 @@ namespace Mathmagician.Tests
             Assert.IsNull(myUserInterfaceList.returnedOperationResult);
         }
 
+        //This test to see if the user interface can Set/Get the "returned" list of values and that the entire list
+        // matches the "set" List/Type 
+        [TestMethod]
+        public void UserInterface_CanGetSetListOfNumbersIsTheCorrectEntireList()
+        {
+            //arrange
+            UserInterface myUserInterfaceList = new UserInterface();
+            myUserInterfaceList.returnedOperationResult = new List<int> { 7, 8, 9 };
+            List<int> testListSame = new List<int> { 7, 8, 9 };
+            List<int> testListDifferent = new List<int> { 7, 8, 10 };
+
+            //assert
+            CollectionAssert.AreEqual(testListSame, myUserInterfaceList.returnedOperationResult);
+            CollectionAssert.AreNotEqual(testListDifferent, myUserInterfaceList.returnedOperationResult);
+        }
+
         //This tests to see if the user interface can Set/Get the "returned" list of values and that a single element
         // matches what should be contained 
         [TestMethod]
@@ -92,6 +108,24 @@ namespace Mathmagician.Tests
 
             //assert
             Assert.IsFalse(myUserInterface.CheckUserNumberInput("10"));
+        }
+
+        //The InitiateNumberOperation calls the individual operation method and assigns the returned results to the List returnedOperationResult.
+        // The default of the switch statement should never be called but assigns a single element to returnedOperationResult = 96500
+        [TestMethod]
+        public void UserInterface_CheckTheExcecutionOfTheInitiateNumberOperationEntireListReturnedIsCorrect()
+        {
+            //arrange
+            UserInterface myUserInterface = new UserInterface();
+            List<int> testListSame = new List<int> { 96500 };
+            List<int> testListDifferent = new List<int> { 96501 };
+
+            //act
+            myUserInterface.InitiateNumberOperation("", 0); // Triggers the "default" switch case
+
+            //assert
+            CollectionAssert.AreEqual(testListSame, myUserInterface.returnedOperationResult);
+            CollectionAssert.AreNotEqual(testListDifferent, myUserInterface.returnedOperationResult);
         }
 
         //The InitiateNumberOperation calls the individual operation method and assigns the returned results to the List returnedOperationResult.

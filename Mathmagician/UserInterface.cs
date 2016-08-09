@@ -19,7 +19,6 @@ namespace Mathmagician
                 && sentUserMathOperationCommand != "even"
                 && sentUserMathOperationCommand != "odd")
             {
-                Console.WriteLine("Whoops!");
                 return true;
             }
             return false;
@@ -32,12 +31,10 @@ namespace Mathmagician
 
             if (!Int32.TryParse(sentUserStringNumberToPrint, out result))
             {
-                Console.WriteLine("Whoops!");
                 return true;
             }
             else if (result < 1)
             {
-                Console.WriteLine("Whoops!");
                 return true;
             }
             return false;
@@ -49,23 +46,18 @@ namespace Mathmagician
             switch (userMathOperationCommand)
             {
                 case "integers":
-                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
                     returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
                     break;
                 case "primes":
-                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
                     returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
                     break;
                 case "fibonacci":
-                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
                     returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
                     break;
                 case "even":
-                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
                     returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
                     break;
                 case "odd":
-                    Console.WriteLine($"...Called {userMathOperationCommand}..."); //Placeholder for compile and tests
                     returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
                     break;
                 default:

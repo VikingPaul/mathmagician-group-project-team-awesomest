@@ -24,7 +24,13 @@ namespace Mathmagician
             {
                 Console.Write("What would you like for me to do? ");
                 userOperationCommand = Console.ReadLine().ToLower();
+
                 invalidCommandInput = userInterface.CheckUserCommandInput(userOperationCommand);
+
+                if (invalidCommandInput)
+                {
+                    Console.WriteLine("Whoops!");
+                }
             }
 
             // Gets the user number of value to output
@@ -33,6 +39,12 @@ namespace Mathmagician
                 Console.Write("How many should I print? ");
                 userStringOfValues = Console.ReadLine();
                 invalidNumberInput = userInterface.CheckUserNumberInput(userStringOfValues);
+
+                if (invalidNumberInput)
+                {
+                    Console.WriteLine("Whoops!");
+                }
+
             }
             userNumberOfValues = Int32.Parse(userStringOfValues);
 

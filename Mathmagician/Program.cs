@@ -10,9 +10,13 @@ namespace Mathmagician
     {
         static void Main(string[] args)
         {
-            
-        }
+            UserInterface userInterface = new UserInterface();
 
-        
+            // Gets the user command and checks to see if its a valid command
+            userInterface.InitialUserOperationCommand();
+            userInterface.GetUserNumbersToPrint();
+            userInterface.InitiateNumberOperation();
+            userInterface.PrintReturnedOperationList();
+        }
     }
 }

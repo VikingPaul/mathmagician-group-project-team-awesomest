@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fibonacci.cs" />
+    <Compile Include="Odd.cs" />
+    <Compile Include="UserInterface.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

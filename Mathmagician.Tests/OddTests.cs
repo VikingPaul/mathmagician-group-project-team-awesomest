@@ -66,5 +66,16 @@ namespace Mathmagician.Tests
             //assert 
             Assert.AreEqual(10000, new Odd().CountOddNumbers(10000).Count);
         }
+        [TestMethod]
+        public void Odd_ReturnedListIsTheCorrectList()
+        {
+            //arrange (nothing in this case)
+            List<int> testList = new List<int> { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+
+            //act (nothing in this case)
+
+            //assert
+            CollectionAssert.AreEqual(testList, new Odd().CountOddNumbers(10));
+        }
     }
 }

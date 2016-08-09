@@ -110,7 +110,7 @@ namespace Mathmagician.Tests
         }
 
         //Sets the returnedOperationResult List to {2, 66, 78 } and then calls the ReturnedOperationValues method which put the list values in a string
-        // This checks to see if the returned thing is the correct string
+        // This checks to see if the returned thing is a String and also the correct string
         [TestMethod]
         public void UserInterface_IsTheResultsStringInFactTheCorrectString()
         {
@@ -119,6 +119,7 @@ namespace Mathmagician.Tests
             myUserInterface.returnedOperationResult = new List<int> { 2, 66, 78 };
 
             //assert
+            Assert.AreEqual("String", myUserInterface.ReturnedOperationValues().GetType().Name);
             Assert.AreEqual("2 66 78 ", myUserInterface.ReturnedOperationValues());
         }
     }

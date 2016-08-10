@@ -41,7 +41,6 @@ namespace Mathmagician.Tests
             CollectionAssert.AreEqual(testListSame, myUserInterfaceList.returnedOperationResult);
             CollectionAssert.AreNotEqual(testListDifferent, myUserInterfaceList.returnedOperationResult);
         }
-
         //This tests to see if the user interface can Set/Get the "returned" list of values and that a single element
         // matches what should be contained 
         [TestMethod]

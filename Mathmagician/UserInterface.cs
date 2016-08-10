@@ -65,7 +65,6 @@ namespace Mathmagician
                     break;
             }
         }
-
         // Adds the user's number values to a string for outputting to the Console
         public string ReturnedOperationValues()
         {

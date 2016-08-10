@@ -8,111 +8,72 @@ namespace Mathmagician
 {
     public class UserInterface
     {
-        // Holds the User's Operation Command
-        public string userMathOperationCommand { get; set; } = null;
+        public List<int> returnedOperationResult { get; set; } = null; // Holds the operation values returned from a called method
         
-        // Holds the User's Numbers to Print
-        public int userNumbersToPrint { get; set; } = 0;
-        
-        // Holds the operation values returned from a called method
-        public List<int> returnedOperationResult { get; set; }
-
-        // Query the user and set the user's operation command
-        public void InitialUserOperationCommand()
-        {
-            bool wrongInput = true;
-            while (wrongInput)
-            {
-                Console.Write("What would you like for me to do? ");
-                userMathOperationCommand = Console.ReadLine();
-                wrongInput = CheckUserCommandInput();
-            }
-        }
-
-        // Query the user for the number of operation results to print and set it 
-        public void GetUserNumbersToPrint()
-        {
-            bool wrongInput = true;
-            string userStringNumberToPrint = null;
-
-            while (wrongInput)
-            {
-                Console.Write("How many should I print? ");
-                userStringNumberToPrint = Console.ReadLine();
-                wrongInput = CheckUserNumberInput(userStringNumberToPrint);
-            }
-        }
-
-        // Calls the correct operation method based on the users prior input
-        public void InitiateNumberOperation()
-        {
-            Console.WriteLine($"\nCool, I'm going to print {userNumbersToPrint} {userMathOperationCommand} numbers.");
-
-            switch (userMathOperationCommand)
-            {
-                case "Integers":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "Primes":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "Fibonacci":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "even":
-                    Console.WriteLine($"...Called {userMathOperationCommand}...");
-                    break;
-                case "odd":
-                    Odd oddNumbers = new Odd();
-                    returnedOperationResult = oddNumbers.CountOddNumbers(userNumbersToPrint);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        // Prints the user's results
-        public void PrintReturnedOperationList()
-        {
-            Console.Write($"Your values are: ");
-            foreach (var listItem in returnedOperationResult)
-            {
-                Console.Write($"{listItem} ");
-            }
-            Console.Write("\n");
-        }
-
         // Checks to see if the users operation command is one of the five operations
-        public bool CheckUserCommandInput()
+        public bool CheckUserCommandInput(string sentUserMathOperationCommand)
         {
-            if (userMathOperationCommand != "Integers"
-                && userMathOperationCommand != "Primes"
-                && userMathOperationCommand != "Fibonacci"
-                && userMathOperationCommand != "even"
-                && userMathOperationCommand != "odd")
+            if (sentUserMathOperationCommand != "integers"
+                && sentUserMathOperationCommand != "primes"
+                && sentUserMathOperationCommand != "fibonacci"
+                && sentUserMathOperationCommand != "even"
+                && sentUserMathOperationCommand != "odd")
             {
-                Console.WriteLine("Whoops!");
                 return true;
             }
-                return false;
+            return false;
         }
 
         // Checks to see if the user-entered "number" of results to display is actually an integer 
-            public bool CheckUserNumberInput(string sentUserStringNumberToPrint)
+        public bool CheckUserNumberInput(string sentUserStringNumberToPrint)
         {
             int result;
 
             if (!Int32.TryParse(sentUserStringNumberToPrint, out result))
             {
-                Console.WriteLine("Whoops!");
-                return true;
-            } else if (result < 1)
-            {
-                Console.WriteLine("Whoops!");
                 return true;
             }
-            userNumbersToPrint = result;
+            else if (result < 1)
+            {
+                return true;
+            }
             return false;
+        }
+
+        // Calls the correct operation method based on the users prior input
+        public void InitiateNumberOperation(string userMathOperationCommand, int userNumbersToPrint)
+        {
+            switch (userMathOperationCommand)
+            {
+                case "integers":
+                    returnedOperationResult = new List<int>(new Integer().PrintInteger(userNumbersToPrint)); 
+                    break;
+                case "primes":
+                    returnedOperationResult = new Prime(userNumbersToPrint).PrimeList(); 
+                    break;
+                case "fibonacci":
+                    returnedOperationResult = new List<int>(new Fibonacci().PrintFib(userNumbersToPrint));
+                    break;
+                case "even":
+                    returnedOperationResult = new Even(userNumbersToPrint).EvenList();
+                    break;
+                case "odd":
+                    returnedOperationResult = new Odd().CountOddNumbers(userNumbersToPrint);
+                    break;
+                default:
+                    returnedOperationResult = new List<int> { 96500 }; 
+                    break;
+            }
+        }
+        // Adds the user's number values to a string for outputting to the Console
+        public string ReturnedOperationValues()
+        {
+            string operationValues = "";
+            foreach (var listItem in returnedOperationResult)
+            {
+                operationValues += $"{listItem} ";
+            }
+            return operationValues;
         }
     }
 }

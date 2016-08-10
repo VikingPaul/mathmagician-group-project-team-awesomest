@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Odd.cs" />
-    <Compile Include="UserInterface.cs" />
+    <Compile Include="Even.cs" />
+    <Compile Include="Fibonacci.cs" />
     <Compile Include="Integer.cs" />
+    <Compile Include="Odd.cs" />
+    <Compile Include="Prime.cs" />
+    <Compile Include="UserInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -46,19 +46,19 @@ namespace Mathmagician
             switch (userMathOperationCommand)
             {
                 case "integers":
-                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    returnedOperationResult = new List<int>(new Integer().PrintInteger(userNumbersToPrint)); 
                     break;
                 case "primes":
-                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    returnedOperationResult = new Prime(userNumbersToPrint).PrimeList(); 
                     break;
                 case "fibonacci":
-                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    returnedOperationResult = new List<int>(new Fibonacci().PrintFib(userNumbersToPrint));
                     break;
                 case "even":
-                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    returnedOperationResult = new Even(userNumbersToPrint).EvenList();
                     break;
                 case "odd":
-                    returnedOperationResult = new List<int> { 1, 2, 3 }; //Placeholder for compile
+                    returnedOperationResult = new Odd().CountOddNumbers(userNumbersToPrint);
                     break;
                 default:
                     returnedOperationResult = new List<int> { 96500 }; 

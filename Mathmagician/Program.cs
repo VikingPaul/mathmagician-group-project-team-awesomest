@@ -54,6 +54,7 @@ namespace Mathmagician
 
             Console.Write($"Your values are: ");
             Console.WriteLine(userInterface.ReturnedOperationValues());
+            Console.ReadLine();
         }
     }
 }
